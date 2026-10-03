@@ -2,250 +2,301 @@
 
 import React from 'react';
 import Link from 'next/link';
-import {
-  Sparkles,
-  Store,
-  ShieldCheck,
-  CheckCircle2,
-  MapPin,
-  ArrowRight,
-  Battery,
-  Camera,
-  Layers,
-  ChevronRight,
-} from 'lucide-react';
 import { AppleFooter } from '@/components/apple/AppleFooter';
-import { APPLE_MASTER_CATALOG } from '@/data/apple-master-catalog';
-import { getAllResellers } from '@/lib/store-service';
-import { formatBRL } from '@/lib/utils';
+import { ArrowRight, ChevronRight, Store, ShieldCheck, Sparkles, MapPin } from 'lucide-react';
 
-export default function SaaSPlatformLandingPage() {
-  const resellers = getAllResellers();
-  const demoStore1 = resellers[0]; // iPhones Brasil (Brasília)
-  const demoStore2 = resellers[1]; // Paulista Prime (São Paulo)
-
+export default function AppleCloneHomePage() {
   return (
-    <div className="min-h-screen bg-canvas flex flex-col justify-between">
-      {/* TILE 1 (LIGHT HERO): Apresentação do SaaS Clone Apple */}
-      <section className="w-full bg-canvas text-ink py-20 px-4 text-center border-b border-hairline/60">
-        <div className="max-w-4xl mx-auto space-y-5">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-canvas-parchment text-ink text-[13px] font-medium border border-hairline/80 shadow-xs">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span>SaaS para Revendedores de Produtos Apple Novos e Seminovos</span>
-          </div>
-
-          <h1 className="text-[44px] sm:text-[64px] font-semibold text-ink tracking-apple-hero leading-[1.05]">
-            O catálogo Apple definitivo. <br className="hidden sm:inline" />
-            Personalizado para sua loja.
+    <div className="min-h-screen bg-canvas text-ink flex flex-col justify-between">
+      {/* TILE 1 (LIGHT HERO): iPhone 16 Pro Max */}
+      <section className="w-full bg-canvas text-ink pt-16 pb-12 px-4 text-center border-b border-hairline/60">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <h1 className="text-[44px] sm:text-[56px] font-semibold text-ink tracking-apple-hero leading-[1.07]">
+            iPhone 16 Pro
           </h1>
 
-          <p className="text-[21px] sm:text-[24px] text-ink-muted48 max-w-2xl mx-auto font-normal leading-snug">
-            Todos os produtos da Apple já mapeados com variações de fábrica. Cadastre novos lacrados ou seminovos com saúde de bateria e fotos reais em poucos segundos.
+          <p className="text-[24px] sm:text-[28px] text-ink-muted48 font-normal leading-snug">
+            Construído em titânio. Tão Pro.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-            <Link
-              href="/dashboard/catalogo/novo"
-              className="btn-apple-primary px-8 py-3 text-[17px] font-medium w-full sm:w-auto shadow-sm"
-            >
-              Criar Meu Catálogo Grátis
-            </Link>
+          <p className="text-[17px] text-ink-muted48 max-w-lg mx-auto">
+            Plataforma oficial de catálogo para revendedores Apple. Novos lacrados e seminovos certificados.
+          </p>
 
+          {/* Action Pills */}
+          <div className="flex items-center justify-center gap-3 pt-3">
             <Link
               href="/iphones-brasil"
-              className="btn-apple-secondary px-8 py-3 text-[17px] font-medium w-full sm:w-auto flex items-center justify-center gap-1.5"
+              className="btn-apple-primary px-5 py-2 text-[15px]"
             >
-              <Store className="w-4 h-4" />
-              <span>Ver Loja Demo (Brasília)</span>
+              Ver Loja Demo (Brasília)
+            </Link>
+
+            <Link
+              href="/dashboard/catalogo/novo"
+              className="btn-apple-secondary px-5 py-2 text-[15px] flex items-center gap-1"
+            >
+              <span>Montar Catálogo</span>
+              <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Hero Photography Renders */}
-          <div className="pt-10 flex items-center justify-center">
-            <img
-              src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409_GEO_EMEA?wid=5120&hei=2880&fmt=webp"
-              alt="iPhone 16 Pro Titânio"
-              className="max-h-[380px] w-auto object-contain apple-product-shadow"
-            />
+          {/* Hero Photography with System Shadow */}
+          <div className="pt-8 flex justify-center">
+            <Link href="/iphones-brasil" className="group block">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409_GEO_EMEA?wid=5120&hei=2880&fmt=webp"
+                alt="iPhone 16 Pro Titânio Deserto"
+                className="max-h-[360px] sm:max-h-[420px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-500"
+              />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* TILE 2 (DARK TILE 1 - #272729): Lacrado vs. Seminovo */}
-      <section className="w-full bg-surface-tile1 text-white py-20 px-4">
-        <div className="max-w-[1100px] mx-auto space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-[13px] font-semibold uppercase tracking-wider text-primary-on-dark">
-              Didática Visual Incomparável
-            </span>
-            <h2 className="text-[36px] sm:text-[48px] font-semibold text-white tracking-apple-hero leading-tight">
-              Novos ou Seminovos. <br />
-              Tratados com a transparência que vendem.
-            </h2>
-            <p className="text-[17px] text-body-muted leading-relaxed">
-              O cliente sabe exatamente o que está comprando antes mesmo de clicar no anúncio.
-            </p>
+      {/* TILE 2 (DARK TILE - #272729): iPhone 16 */}
+      <section className="w-full bg-surface-tile1 text-white pt-20 pb-16 px-4 text-center border-b border-white/10">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <h2 className="text-[44px] sm:text-[56px] font-semibold text-white tracking-apple-hero leading-[1.07]">
+            iPhone 16
+          </h2>
+
+          <p className="text-[24px] sm:text-[28px] text-body-muted font-normal leading-snug">
+            Cheio de brilho. Controle da Câmera.
+          </p>
+
+          <p className="text-[17px] text-white/70 max-w-lg mx-auto">
+            Todas as cores e armazenamentos de fábrica pré-mapeados para sua revenda.
+          </p>
+
+          {/* Action Pills */}
+          <div className="flex items-center justify-center gap-3 pt-3">
+            <Link
+              href="/iphones-brasil?cat=iphone"
+              className="btn-apple-primary px-5 py-2 text-[15px]"
+            >
+              Explorar iPhones
+            </Link>
+
+            <Link
+              href="/paulista-prime"
+              className="inline-flex items-center justify-center font-normal text-[15px] leading-tight text-white border border-white/30 hover:border-white rounded-full px-5 py-2 transition-all active:scale-[0.95]"
+            >
+              Ver Loja (São Paulo)
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Box Novo Lacrado */}
-            <div className="bg-[#1f1f21] rounded-apple-card p-8 border border-white/10 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  <CheckCircle2 className="w-4 h-4" />
-                  Produto Novo / Lacrado
-                </span>
-                <h3 className="text-[24px] font-semibold text-white">
-                  Zero esforço de cadastro
-                </h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  O revendedor escolhe o modelo e a cor. O sistema carrega instantaneamente as fotos de estúdio em alta resolução da Apple, especificações completas e a garantia mundial oficial de 1 ano.
-                </p>
-              </div>
+          {/* Hero Photography with System Shadow */}
+          <div className="pt-8 flex justify-center">
+            <Link href="/iphones-brasil?cat=iphone" className="group block">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-ultramarine?wid=1000&hei=1000&fmt=png-alpha"
+                alt="iPhone 16 Ultramarino"
+                className="max-h-[340px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-500"
+              />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[13px] text-white/60">
-                <span>Fotos oficiais de estúdio</span>
-                <span>•</span>
-                <span>Garantia Apple 1 ano</span>
+      {/* TILE 3 (2x2 APPLE HOMEPAGE GRID): MacBook Pro, Apple Watch, iPad Pro, AirPods */}
+      <section className="w-full bg-canvas py-8 px-4">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Card A: MacBook Pro M4 (Dark Tile 2) */}
+          <div className="bg-surface-tile2 text-white rounded-apple-card p-10 flex flex-col items-center text-center justify-between min-h-[460px] overflow-hidden group">
+            <div className="space-y-2">
+              <h3 className="text-[34px] sm:text-[40px] font-semibold text-white tracking-apple-hero leading-tight">
+                MacBook Pro
+              </h3>
+              <p className="text-[19px] text-body-muted">
+                Uma força sobrenatural. Com Chip M4.
+              </p>
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/iphones-brasil?cat=mac"
+                  className="btn-apple-primary text-[13px] py-1.5 px-4"
+                >
+                  Ver no Catálogo
+                </Link>
+                <Link
+                  href="/dashboard/catalogo/novo"
+                  className="text-primary-on-dark hover:underline text-[14px] flex items-center gap-1"
+                >
+                  <span>Cadastrar Mac</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
 
-            {/* Box Seminovo Personalizado */}
-            <div className="bg-[#1f1f21] rounded-apple-card p-8 border border-white/10 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold bg-blue-500/10 text-primary-on-dark border border-blue-500/20">
-                  <Sparkles className="w-4 h-4" />
-                  Produto Seminovo / Usado
-                </span>
-                <h3 className="text-[24px] font-semibold text-white">
-                  Fotos reais e bateria em destaque
-                </h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Permite cadastrar a saúde da bateria (ex: 94%), a classificação estética (Grade A+), observações personalizadas do aparelho e carregar as fotos reais que aparecem logo de cara no card da vitrine.
-                </p>
-              </div>
+            <div className="pt-6 w-full flex justify-center">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=1000&hei=1000&fmt=png-alpha"
+                alt="MacBook Pro M4"
+                className="max-h-[220px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[13px] text-white/60">
-                <span>Foto real no card</span>
-                <span>•</span>
-                <span>Medidor de bateria</span>
-                <span>•</span>
-                <span>Termo da loja</span>
+          {/* Card B: Apple Watch Series 10 (Light Parchment) */}
+          <div className="bg-canvas-parchment text-ink rounded-apple-card p-10 flex flex-col items-center text-center justify-between min-h-[460px] overflow-hidden border border-hairline/80 group">
+            <div className="space-y-2">
+              <h3 className="text-[34px] sm:text-[40px] font-semibold text-ink tracking-apple-hero leading-tight">
+                Apple Watch Series 10
+              </h3>
+              <p className="text-[19px] text-ink-muted48">
+                O mais fino de sempre. Com a maior tela.
+              </p>
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/iphones-brasil?cat=watch"
+                  className="btn-apple-primary text-[13px] py-1.5 px-4"
+                >
+                  Ver no Catálogo
+                </Link>
+                <Link
+                  href="/dashboard/catalogo/novo"
+                  className="text-primary hover:underline text-[14px] flex items-center gap-1"
+                >
+                  <span>Cadastrar Watch</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
+            </div>
+
+            <div className="pt-6 w-full flex justify-center">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s10-case-unselect-gallery-1-202409?wid=1000&hei=1000&fmt=png-alpha"
+                alt="Apple Watch Series 10"
+                className="max-h-[220px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Card C: iPad Pro M4 (Parchment) */}
+          <div className="bg-canvas-parchment text-ink rounded-apple-card p-10 flex flex-col items-center text-center justify-between min-h-[460px] overflow-hidden border border-hairline/80 group">
+            <div className="space-y-2">
+              <h3 className="text-[34px] sm:text-[40px] font-semibold text-ink tracking-apple-hero leading-tight">
+                iPad Pro
+              </h3>
+              <p className="text-[19px] text-ink-muted48">
+                Ultrafino. Tela Ultra Retina XDR OLED.
+              </p>
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/iphones-brasil?cat=ipad"
+                  className="btn-apple-primary text-[13px] py-1.5 px-4"
+                >
+                  Ver no Catálogo
+                </Link>
+                <Link
+                  href="/dashboard/catalogo/novo"
+                  className="text-primary hover:underline text-[14px] flex items-center gap-1"
+                >
+                  <span>Cadastrar iPad</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="pt-6 w-full flex justify-center">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-finish-unselect-gallery-1-202405?wid=1000&hei=1000&fmt=png-alpha"
+                alt="iPad Pro M4"
+                className="max-h-[220px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Card D: AirPods Pro 2 (Pure White) */}
+          <div className="bg-canvas text-ink rounded-apple-card p-10 flex flex-col items-center text-center justify-between min-h-[460px] overflow-hidden border border-hairline/80 group">
+            <div className="space-y-2">
+              <h3 className="text-[34px] sm:text-[40px] font-semibold text-ink tracking-apple-hero leading-tight">
+                AirPods Pro (2ª geração)
+              </h3>
+              <p className="text-[19px] text-ink-muted48">
+                Cancelamento Ativo de Ruído até 2x superior.
+              </p>
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/iphones-brasil?cat=airpods"
+                  className="btn-apple-primary text-[13px] py-1.5 px-4"
+                >
+                  Ver no Catálogo
+                </Link>
+                <Link
+                  href="/dashboard/catalogo/novo"
+                  className="text-primary hover:underline text-[14px] flex items-center gap-1"
+                >
+                  <span>Cadastrar AirPods</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="pt-6 w-full flex justify-center">
+              <img
+                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=1000&hei=1000&fmt=png-alpha"
+                alt="AirPods Pro 2"
+                className="max-h-[200px] w-auto object-contain apple-product-shadow group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* TILE 3 (PARCHMENT): Atuação Regional e Retirada em Mãos */}
-      <section className="w-full bg-canvas-parchment text-ink py-20 px-4 border-b border-hairline">
-        <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4">
-            <span className="text-[13px] font-semibold uppercase tracking-wider text-primary">
-              Multi-tenant Regional
-            </span>
-            <h2 className="text-[36px] sm:text-[44px] font-semibold text-ink tracking-apple-hero leading-tight">
-              Feito para quem vende em sua região.
-            </h2>
-            <p className="text-[17px] text-ink-muted80 leading-relaxed">
-              Muitos revendedores atuam em polos específicos — como Brasília, São Paulo ou Goiânia — onde a entrega em mãos e a retirada em locais seguros são o padrão.
-            </p>
-            <p className="text-[15px] text-ink-muted48 leading-relaxed">
-              Cada loja tem seu diretório exclusivo (ex: <code className="text-ink font-semibold">/iphones-brasil</code>), destacando endereço de retirada, termos de garantia e canal direto para o WhatsApp.
-            </p>
+      {/* TILE 4 (SAAS REGIONAL VALUE PROP): Como Funciona para o Revendedor */}
+      <section className="w-full bg-canvas-parchment text-ink py-20 px-4 border-t border-hairline">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <span className="text-[13px] font-semibold uppercase tracking-wider text-primary">
+            SaaS para Lojistas e Revendedores
+          </span>
 
-            <div className="pt-2 flex flex-wrap gap-3">
-              <Link
-                href="/iphones-brasil"
-                className="btn-apple-primary text-[14px] py-2 px-5 flex items-center gap-1.5"
-              >
-                <span>Explorar Vitrine de Brasília (DF)</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/paulista-prime"
-                className="btn-apple-secondary text-[14px] py-2 px-5"
-              >
-                <span>Explorar Vitrine de São Paulo (SP)</span>
-              </Link>
+          <h2 className="text-[36px] sm:text-[48px] font-semibold text-ink tracking-apple-hero leading-tight">
+            Monte sua vitrine oficial em minutos.
+          </h2>
+
+          <p className="text-[17px] text-ink-muted80 max-w-2xl mx-auto leading-relaxed">
+            Dê aos seus clientes a experiência de compra do site da Apple, com a transparência e agilidade que o mercado de revenda exige.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 text-left">
+            <div className="bg-white p-6 rounded-apple-card border border-hairline/80 space-y-2">
+              <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                1
+              </div>
+              <h4 className="font-semibold text-ink text-[17px]">Catálogo Mestre Pronto</h4>
+              <p className="text-[13px] text-ink-muted48 leading-relaxed">
+                Todos os modelos e variações de fábrica já pré-cadastrados com fotos oficiais.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-apple-card border border-hairline/80 space-y-2">
+              <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                2
+              </div>
+              <h4 className="font-semibold text-ink text-[17px]">Lacrados ou Seminovos</h4>
+              <p className="text-[13px] text-ink-muted48 leading-relaxed">
+                Cadastre a saúde da bateria, observações e fotos reais que aparecem logo de cara no card.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-apple-card border border-hairline/80 space-y-2">
+              <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                3
+              </div>
+              <h4 className="font-semibold text-ink text-[17px]">Foco na Sua Região</h4>
+              <p className="text-[13px] text-ink-muted48 leading-relaxed">
+                Destaque sua cidade e ponto de retirada para clientes negociarem direto no WhatsApp.
+              </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-apple-card border border-hairline p-6 shadow-sm space-y-4">
-            <div className="flex items-center gap-3 pb-3 border-b border-hairline">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="font-semibold text-ink text-[16px]">Exemplo de Exibição Regional</div>
-                <div className="text-[12px] text-ink-muted48">Card com transparência para o comprador</div>
-              </div>
-            </div>
-
-            <div className="space-y-2 text-[13px] text-ink-muted80">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span><strong>Cidade:</strong> Brasília - DF</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary"></span>
-                <span><strong>Retirada:</strong> ParkShopping Brasília ou Asa Sul</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-ink"></span>
-                <span><strong>Negociação:</strong> Direto no WhatsApp sem intermediários</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TILE 4 (WHITE): Catálogo Mestre Apple Completo */}
-      <section id="catalogo-oficial" className="w-full bg-canvas text-ink py-20 px-4">
-        <div className="max-w-[1200px] mx-auto space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-[13px] font-semibold uppercase tracking-wider text-primary">
-              Mapeamento Completo
-            </span>
-            <h2 className="text-[36px] sm:text-[48px] font-semibold text-ink tracking-apple-hero leading-tight">
-              O ecossistema Apple já está pronto.
-            </h2>
-            <p className="text-[17px] text-ink-muted48">
-              Centenas de variações de modelos, cores oficiais, chips de silício da Apple e capacidades pré-configuradas.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {APPLE_MASTER_CATALOG.slice(0, 6).map((product) => (
-              <div
-                key={product.id}
-                className="bg-canvas-parchment rounded-apple-card p-4 border border-hairline flex flex-col items-center text-center justify-between hover:border-primary/50 transition-all duration-200 group"
-              >
-                <div className="w-full h-32 flex items-center justify-center p-2 mb-2">
-                  <img
-                    src={product.defaultImage}
-                    alt={product.name}
-                    className="max-h-full max-w-full object-contain apple-product-shadow group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-ink text-[14px] leading-tight">
-                    {product.name}
-                  </h4>
-                  <span className="text-[11px] text-ink-muted48">
-                    {product.family} • {product.releaseYear}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center pt-4">
+          <div className="pt-6">
             <Link
               href="/dashboard/catalogo/novo"
-              className="btn-apple-primary px-8 py-3 text-[16px] font-semibold"
+              className="btn-apple-primary px-8 py-3 text-[17px] font-semibold"
             >
-              Acessar Painel e Montar Catálogo Agora
+              Começar Agora Gratuitamente
             </Link>
           </div>
         </div>
